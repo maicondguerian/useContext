@@ -1,0 +1,30 @@
+:root {
+  @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap');
+  color-scheme: light dark;
+  /* color: #535bf2; */
+  background-color: #242424;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+*{
+  outline: none;
+}
+
+body {
+display: grid;
+place-items: center;
+height: 100vh;
+padding: 0;
+margin: 0;
+box-sizing: border-box;
+}
+
+.input-wrapper{
+  display: grid;
+}
+
+.inputWrapper{
+  width: 200px;
+  height: 50px;
+}
+

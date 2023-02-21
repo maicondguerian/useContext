@@ -1,0 +1,32 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.modal {
+  height: 500px;
+  width: 500px;
+  background-color: #fff;
+  position: relative;
+}
+.closeBtn {
+  position: absolute;
+  right: 0;
+  top: -17px;
+  background-color: crimson;
+  border: none;
+}
+h1 {
+  color: black;
+}
+.show-btn {
+  position: absolute;
+  white-space: nowrap;
+}
+.div-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
