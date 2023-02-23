@@ -1,26 +1,43 @@
 import { useContext } from "react";
 import { LoginContext } from "../Context/LoginContext";
-import styles from "./Login.module.css";
 
 export default function Login() {
-  const { setUser, setLogin } = useContext(LoginContext);
+  const {
+    error,
+    usernameValid,
+    passwordValid,
+    usernameInputRef,
+    passwordInputRef,
+    handleInputChange,
+    handleSubmit,
+  } = useContext(LoginContext);
 
   return (
-    <>
-      <div
-        className={`${styles["login-wrapper"]} ${styles["container-wrapper"]}`}
-      >
-        <h1>Login</h1>
+    <form>
+      {error && <p>{error}</p>}
+      <div>
+        <label htmlFor="username">Usuário</label>
         <input
           type="text"
-          placeholder="User"
-          onChange={(e) => {
-            setUser(e.target.value);
-          }}
+          id="username"
+          name="username"
+          ref={usernameInputRef}
+          onChange={handleInputChange}
+          className={usernameValid ? "valid" : ""}
         />
-        <input type="text" placeholder="Password" />
       </div>
-      <button onClick={() => setLogin(true)}>Login</button>
-    </>
+      <div>
+        <label htmlFor="password">Senha</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          ref={passwordInputRef}
+          onChange={handleInputChange}
+          className={passwordValid ? "valid" : ""}
+        />
+      </div>
+      <button onClick={handleSubmit}>Entrar</button>
+    </form>
   );
 }
