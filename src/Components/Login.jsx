@@ -4,6 +4,7 @@ import { LoginContext } from "../Context/LoginContext";
 export default function Login() {
   const {
     error,
+    isLoggedIn,
     usernameValid,
     passwordValid,
     usernameInputRef,
@@ -37,7 +38,7 @@ export default function Login() {
           className={passwordValid ? "valid" : ""}
         />
       </div>
-      <button onClick={handleSubmit}>Entrar</button>
+      <button onClick={handleSubmit}>{isLoggedIn ? 'Entrando' : 'Entrar'}</button>
     </form>
   );
 }

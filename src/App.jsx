@@ -16,7 +16,7 @@ function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+  
     if (user === "") {
       setError("Por favor, preencha o campo Usuário.");
       inputFocus("username");
@@ -27,11 +27,14 @@ function App() {
       setError("A senha deve ter pelo menos 6 caracteres.");
       inputFocus("password");
     } else {
-      setLogin(true);
-      setIsLoggedIn(true);
+      setTimeout(() => {
+        setLogin(true);
+        setIsLoggedIn(true); // define isLoggedIn como true quando o login for bem-sucedido
+      }, 2000);
+      
     }
   };
-
+  
   const inputFocus = (fieldName) => {
     if (fieldName === "username" && usernameInputRef.current) {
       setUsernameValid(false);
@@ -65,16 +68,24 @@ function App() {
   return (
     <div>
       <LoginContext.Provider value={{ 
+        user,
+        setUser,
+        setPassword,
+        password,
         error,
+        login,
+        setLogin,
         usernameValid,
         passwordValid,
         usernameInputRef,
         passwordInputRef,
         handleInputChange,
         handleSubmit,
+        isLoggedIn,
+        setIsLoggedIn
         
         }}>
-       {login ? <Profile/> : <Login/> } 
+       {isLoggedIn ? <Profile/> : <Login/> } 
       </LoginContext.Provider>
     </div>
   )
