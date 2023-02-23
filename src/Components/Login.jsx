@@ -11,6 +11,7 @@ export default function Login() {
     passwordInputRef,
     handleInputChange,
     handleSubmit,
+    buttonText
   } = useContext(LoginContext);
 
   return (
@@ -38,7 +39,7 @@ export default function Login() {
           className={passwordValid ? "valid" : ""}
         />
       </div>
-      <button onClick={handleSubmit}>{isLoggedIn ? 'Entrando' : 'Entrar'}</button>
+      <button onClick={handleSubmit} disabled={buttonText === 'Entrando...'}>{buttonText}</button>
     </form>
   );
 }

@@ -13,9 +13,11 @@ function App() {
   const passwordInputRef = useRef(null);
   const [usernameValid, setUsernameValid] = useState(false);
   const [passwordValid, setPasswordValid] = useState(false);
+  const [buttonText, setButtonText] = useState('Entrar');
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    setError("");
   
     if (user === "") {
       setError("Por favor, preencha o campo Usuário.");
@@ -27,11 +29,12 @@ function App() {
       setError("A senha deve ter pelo menos 6 caracteres.");
       inputFocus("password");
     } else {
+      setButtonText('Entrando...');
       setTimeout(() => {
         setLogin(true);
         setIsLoggedIn(true); // define isLoggedIn como true quando o login for bem-sucedido
-      }, 2000);
-      
+        setButtonText('Entrar');
+      }, 3000);
     }
   };
   
@@ -82,7 +85,8 @@ function App() {
         handleInputChange,
         handleSubmit,
         isLoggedIn,
-        setIsLoggedIn
+        setIsLoggedIn,
+        buttonText
         
         }}>
        {isLoggedIn ? <Profile/> : <Login/> } 
